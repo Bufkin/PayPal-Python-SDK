@@ -15,7 +15,7 @@ payment = Payment({
 
     # Payer
     # A resource representing a Payer that funds a payment
-    # Payment Method as 'paypal'
+    #  Method as 'PayPal'
     "payer": {
         "payment_method": "paypal"},
 
@@ -48,14 +48,14 @@ payment = Payment({
 
 # Create Payment and return status
 if payment.create():
-    print("Payment[%s] created successfully" % (payment.id))
+    print("Payment[%s] created successfully" % payment.id)
     # Redirect the user to given approval url
     for link in payment.links:
         if link.rel == "approval_url":
-            # Convert to str to avoid google appengine unicode issue
+            # Convert to str to avoid google app engine unicode issue
             # https://github.com/paypal/rest-api-sdk-python/pull/58
             approval_url = str(link.href)
-            print("Redirect for approval: %s" % (approval_url))
+            print("Redirect for approval: %s" % approval_url)
 else:
     print("Error while creating payment:")
     print(payment.error)

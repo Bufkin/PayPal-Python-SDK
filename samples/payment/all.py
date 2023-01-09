@@ -10,16 +10,15 @@ from paypalrestsdk import Payment
 import logging
 logging.basicConfig(level=logging.INFO)
 
-# Retrieve
 # Retrieve the PaymentHistory  by calling the
 # `all` method
 # on the Payment class
 # Refer the API documentation
 # for valid values for keys
-# Supported paramters are :count, :next_id
+# Supported parameters are :count, :next_id
 payment_history = Payment.all({"count": 2})
 
 # List Payments
 print("List Payment:")
 for payment in payment_history.payments:
-    print("  -> Payment[%s]" % (payment.id))
+    print("  -> Payment[%s]" % payment.id)
